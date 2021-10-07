@@ -1,14 +1,19 @@
-Good aproximation found in iteration 718204
-Startposition: 6;2
-reached stringIndex 39 of 43
-$	$	f	$	$	$	$	$	$	$	$	$	$	
-$	/	$	\	$	$	$	$	$	$	$	$	$	
-a	--	m	--	o	--	r	$	$	$	s	$	$	
-$	$	$	$	$	\	$	\	$	/	|	$	$	
-n	$	c	--	t	$	p	$	e	--	t	$	$	
-|	\	|	/	|	\	|	/	$	/	$	$	$	
-b	$	a	--	s	--	e	$	a	--	r	--	o	
-$	\	|	\	$	/	|	/	$	\	$	/	$	
-$	$	e	$	c	$	l	$	$	$	b	$	$	
-$	$	$	$	$	$	$	$	$	$	$	$	$	
-$	$	$	$	$	$	$	$	$	$	$	$	$	
+Good aproximation found in iteration 4930733
+Startposition: 8;12
+reached stringIndex 47 of 52
+naturallanguagetestactionsconstrainfeatureautom
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	 	f	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	/	 	\	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	e	 	i	--	n	 	 	
+ 	 	 	 	 	 	 	 	 	 	|	/	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	a	--	l	 	g	 	 	
+ 	 	 	 	 	 	 	 	 	/	|	\	 	/	 	\	 	
+ 	 	 	 	 	 	s	--	t	--	r	 	n	 	g	 	u	
+ 	 	 	 	 	 	|	\	 	\	|	\	 	/	|	/	|	
+ 	 	 	 	 	 	n	 	c	 	u	 	e	--	a	 	t	
+ 	 	 	 	 	 	 	\	|	 	 	/	|	/	|	 	|	
+ 	 	 	 	 	 	 	 	o	 	s	--	t	--	c	 	o	
+ 	 	 	 	 	 	 	 	 	\	 	/	 	 	 	/	 	
+ 	 	 	 	 	 	 	 	 	 	i	 	 	 	m	 	 	

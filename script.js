@@ -1,9 +1,10 @@
 fs = require('fs');
 
-const frase = "atestcasecanbeastepofamoreelaboratetestcase";
+const frase = "naturallanguagetestactionsconstrainfeatureautomation";
 //const frase = "littletestxyz";
+console.log("trying to solve for a " + frase.length + " letter sentence...");
 
-const emptyChar = "$"
+const emptyChar = " "
 
 // horizontal connection - = 1
 // vertical connection | = 2
@@ -105,57 +106,62 @@ const checkConnection = (mat, row1, col1, row2, col2) => {
         return 0;
     }
 
-    // field that must be checked for connection
-    let rowConn = 0;
-    let colConn = 0;
-    if (row1 === row2) {
-        rowConn = row1;
-    } else if (row1 === (row2-2)) {
-        rowConn = row2-1;
-    } else if (row1 === (row2+2)) {
-        rowConn = row2+1;
+    // in case of a double letter return 4
+    if (row1 === row2 && col1 === col2) {
+        return 4;
     } else {
-        return console.error("rows in checkConnection don't fit");
-    }
-
-    if (col1 === col2) {
-        colConn = col1;
-    } else if (col1 === (col2-2)) {
-        colConn = col2-1;
-    } else if (col1 === (col2+2)) {
-        colConn = col2+1;
-    } else {
-        return console.error("columns in checkConnection don't fit");
-    }
-
-    // one more sanity check
-    if (mat[rowConn] && mat[rowConn][colConn]) {
-        if (mat[rowConn][colConn] === emptyChar) {
-            // return 3 for "no connection yet"
-            return 3;
+        // field that must be checked for connection
+        let rowConn = 0;
+        let colConn = 0;
+        if (row1 === row2) {
+            rowConn = row1;
+        } else if (row1 === (row2-2)) {
+            rowConn = row2-1;
+        } else if (row1 === (row2+2)) {
+            rowConn = row2+1;
         } else {
-            // connection exists, now check whether it is in the correct direction in respect to row1/col1
-            if (rowConn === row1 && mat[rowConn][colConn] === 1) {
-                // connection is in same row and horizontal connection exists
-                // return 1 for "connection exists"
-                return 1;
-            } else if (colConn === col1 && mat[rowConn][colConn] === 2) {
-                // connection is in same column and vertical connection exists
-                // return 1 for "connection exists"
-                return 1;
-            } else if (((rowConn > row1 && colConn < col1) || (rowConn < row1 && colConn > col1)) && mat[rowConn][colConn] === 3) {
-                // / connection exists
-                return 1;
-            } else if (((rowConn > row1 && colConn > col1) || (rowConn < row1 && colConn < col1)) && mat[rowConn][colConn] === 4) {
-                // \ connection exists
-                return 1;
-            } else {
-                // return 2 for "wrong connection exists"
-                return 2;
-            }
+            return console.error("rows in checkConnection don't fit");
         }
-    } else {
-        console.error("error in checkConnection")
+
+        if (col1 === col2) {
+            colConn = col1;
+        } else if (col1 === (col2-2)) {
+            colConn = col2-1;
+        } else if (col1 === (col2+2)) {
+            colConn = col2+1;
+        } else {
+            return console.error("columns in checkConnection don't fit");
+        }
+
+        // one more sanity check
+        if (mat[rowConn] && mat[rowConn][colConn]) {
+            if (mat[rowConn][colConn] === emptyChar) {
+                // return 3 for "no connection yet"
+                return 3;
+            } else {
+                // connection exists, now check whether it is in the correct direction in respect to row1/col1
+                if (rowConn === row1 && mat[rowConn][colConn] === 1) {
+                    // connection is in same row and horizontal connection exists
+                    // return 1 for "connection exists"
+                    return 1;
+                } else if (colConn === col1 && mat[rowConn][colConn] === 2) {
+                    // connection is in same column and vertical connection exists
+                    // return 1 for "connection exists"
+                    return 1;
+                } else if (((rowConn > row1 && colConn < col1) || (rowConn < row1 && colConn > col1)) && mat[rowConn][colConn] === 3) {
+                    // / connection exists
+                    return 1;
+                } else if (((rowConn > row1 && colConn > col1) || (rowConn < row1 && colConn < col1)) && mat[rowConn][colConn] === 4) {
+                    // \ connection exists
+                    return 1;
+                } else {
+                    // return 2 for "wrong connection exists"
+                    return 2;
+                }
+            }
+        } else {
+            console.error("error in checkConnection")
+        }
     }
 }
 
@@ -165,54 +171,59 @@ const createConnection = (mat, row1, col1, row2, col2) => {
         return console.error("fields too far apart");
     }
 
-    // field that will receive a new connection
-    let rowConn = 0;
-    let colConn = 0;
-    if (row1 === row2) {
-        rowConn = row1;
-    } else if (row1 === (row2-2)) {
-        rowConn = row2-1;
-    } else if (row1 === (row2+2)) {
-        rowConn = row2+1;
+    // in case of a double letter don't create anything
+    if (row1 === row2 && col1 === col2) {
+        return;
     } else {
-        return console.error("rows in createConnection don't fit");
-    }
-
-    if (col1 === col2) {
-        colConn = col1;
-    } else if (col1 === (col2-2)) {
-        colConn = col2-1;
-    } else if (col1 === (col2+2)) {
-        colConn = col2+1;
-    } else {
-        return console.error("columns in createConnection don't fit");
-    }
-
-    // one more sanity check
-    if (mat[rowConn] && mat[rowConn][colConn]) {
-            // connection exists, now check whether it is in the correct direction in respect to row1/col1
-        if (rowConn === row1) {
-            // connection is in same row
-            mat[rowConn][colConn] = 1;
-            return;
-        } else if (colConn === col1) {
-            // connection is in same column
-            mat[rowConn][colConn] = 2;
-            return;
-        } else if ((rowConn > row1 && colConn < col1) || (rowConn < row1 && colConn > col1)) {
-            // / connection created
-            mat[rowConn][colConn] = 3;
-            return;
-        } else if ((rowConn > row1 && colConn > col1) || (rowConn < row1 && colConn < col1)) {
-            // \ connection created
-            mat[rowConn][colConn] = 4;
-            return;
+        // field that will receive a new connection
+        let rowConn = 0;
+        let colConn = 0;
+        if (row1 === row2) {
+            rowConn = row1;
+        } else if (row1 === (row2-2)) {
+            rowConn = row2-1;
+        } else if (row1 === (row2+2)) {
+            rowConn = row2+1;
         } else {
-            // return error for "wrong connection exists"
-            console.error("you are trying to create a new connection at a point that already has another connection")
+            return console.error("rows in createConnection don't fit");
         }
-    } else {
-        console.error("error in createConnection")
+
+        if (col1 === col2) {
+            colConn = col1;
+        } else if (col1 === (col2-2)) {
+            colConn = col2-1;
+        } else if (col1 === (col2+2)) {
+            colConn = col2+1;
+        } else {
+            return console.error("columns in createConnection don't fit");
+        }
+
+        // one more sanity check
+        if (mat[rowConn] && mat[rowConn][colConn]) {
+                // connection exists, now check whether it is in the correct direction in respect to row1/col1
+            if (rowConn === row1) {
+                // connection is in same row
+                mat[rowConn][colConn] = 1;
+                return;
+            } else if (colConn === col1) {
+                // connection is in same column
+                mat[rowConn][colConn] = 2;
+                return;
+            } else if ((rowConn > row1 && colConn < col1) || (rowConn < row1 && colConn > col1)) {
+                // / connection created
+                mat[rowConn][colConn] = 3;
+                return;
+            } else if ((rowConn > row1 && colConn > col1) || (rowConn < row1 && colConn < col1)) {
+                // \ connection created
+                mat[rowConn][colConn] = 4;
+                return;
+            } else {
+                // return error for "wrong connection exists"
+                console.error("you are trying to create a new connection at a point that already has another connection")
+            }
+        } else {
+            console.error("error in createConnection")
+        }
     }
 }
 
@@ -237,8 +248,8 @@ while (gridHeight*gridWidth < maxFields) {
 }
 
 // add one more line and column to check if that facilitates finding a solution
-gridWidth++;
-gridHeight++;
+gridWidth = gridWidth + 3;
+gridHeight = gridHeight + 3;
 
 let grid = new Array(gridHeight + (gridHeight-1)); // # of rows + puentes inbetween
 for (let i = 0; i < grid.length; i++) {
@@ -260,9 +271,13 @@ while (!solutionFound) {
     });
 
     // first letter is placed randomly
-    const startRow = Math.floor(Math.random() * gridHeight);
+    const startRowMin = gridHeight / 4;
+    const startRowMax = gridHeight / 2 + startRowMin;
+    const startRow = Math.floor(Math.random() * (startRowMax - startRowMin + 1) + startRowMin);
     const startRowMatrix = gridIndexToMatrixPosition(startRow);
-    const startCol = Math.floor(Math.random() * gridWidth);
+    const startColMin = gridWidth / 4;
+    const startColMax = gridWidth / 2 + startColMin;
+    const startCol = Math.floor(Math.random() * (startColMax - startColMin + 1) + startColMin);
     const startColMatrix = gridIndexToMatrixPosition(startCol);
 
     let stringIndex = 0;
@@ -287,7 +302,24 @@ while (!solutionFound) {
     let currentColMatrix = gridIndexToMatrixPosition(currentCol);
     
 
-    for (stringIndex = 1; stringIndex < frase.length; stringIndex++) {
+    for (stringIndex = 1; stringIndex < frase.length+1; stringIndex++) {
+
+        // check if we reached the end of frase, in that case we found a solution
+        if (stringIndex === frase.length) {
+            solutionFound = true;
+
+            let outputString = "Solution found in iteration " + iteration + "\n";
+            outputString += "Startposition: " + startRowMatrix + ";" + startColMatrix + "\n";
+            outputString += "reached letter " + stringIndex + " of " + frase.length + "\n";
+            outputString += frase.substring(0, stringIndex) + "\n";
+            outputString += drawGrid(grid);
+            console.log(outputString);
+            fs.writeFileSync('bestGrids.txt', outputString, function (err) {
+                if (err) return console.log(err);
+            });
+
+            break;
+        } 
 
         const currentLetter = frase[stringIndex];
         let emptyNeighborFields = new Array();
@@ -296,38 +328,38 @@ while (!solutionFound) {
         // list of neighbouring fields with contents
         for (let row = currentRow-1; row <= currentRow+1; row++) {
             for (let col = currentCol-1; col <= currentCol+1; col++) {
-                    const rowInMatrix = gridIndexToMatrixPosition(row);
-                    const colInMatrix = gridIndexToMatrixPosition(col);
-                    // only go on if a value exists for that field (not out of bounds)
-                    if (grid[rowInMatrix] && grid[rowInMatrix][colInMatrix]) {
-                        const letterFound = grid[rowInMatrix][colInMatrix];
-                        if (letterFound === currentLetter) {
-                            const connectionCheck = checkConnection(grid, currentRowMatrix, currentColMatrix, rowInMatrix, colInMatrix);
-                            // check if there is already a connection inbetween those fields or an empty field
-                            if (connectionCheck === 1 || connectionCheck === 3) {
-                                letterFoundFields.push(new Array([row, col]));
-                            }
-                            // else there is a wrong connection and we do nothing with that field
-                        } else if (letterFound === emptyChar) {
-                            // check if there is already some connection blocking the creation of a new connection to that neighbouring field
-                            // do not have to check whether it is the correct connection because there will never be connections created that have an empty field on one side
-                            const connectionCheck = checkConnection(grid, currentRowMatrix, currentColMatrix, rowInMatrix, colInMatrix);
-                            if (!(connectionCheck === 2)) {
-                                // finally check whether that letter was alredy used 2 times (3 times exception), in that case we cannot add another one and cannot use that field
-                                letterIndexInLetterArray = findLetterInArray(currentLetter, letterArray);
-                                let noOfThreesInLetterArray = 0;
-                                letterArray.forEach(letter => {
-                                    if (letter[0][1] === 3) {
-                                        noOfThreesInLetterArray++;
-                                    }
-                                });
-                                if (!(letterArray[letterIndexInLetterArray][0][1] > 1) || (letterArray[letterIndexInLetterArray][0][1] === 2 && noOfThreesInLetterArray < 2)) {
-                                    emptyNeighborFields.push(new Array([row, col]));
-                                }
-                            }
-                            
+                const rowInMatrix = gridIndexToMatrixPosition(row);
+                const colInMatrix = gridIndexToMatrixPosition(col);
+                // only go on if a value exists for that field (not out of bounds)
+                if (grid[rowInMatrix] && grid[rowInMatrix][colInMatrix]) {
+                    const letterFound = grid[rowInMatrix][colInMatrix];
+                    if (letterFound === currentLetter) {
+                        const connectionCheck = checkConnection(grid, currentRowMatrix, currentColMatrix, rowInMatrix, colInMatrix);
+                        // check if there is already a connection inbetween those fields or an empty field
+                        if (connectionCheck === 1 || connectionCheck === 3 || connectionCheck === 4) {
+                            letterFoundFields.push(new Array([row, col]));
                         }
+                        // else there is a wrong connection and we do nothing with that field
+                    } else if (letterFound === emptyChar) {
+                        // check if there is already some connection blocking the creation of a new connection to that neighbouring field
+                        // do not have to check whether it is the correct connection because there will never be connections created that have an empty field on one side
+                        const connectionCheck = checkConnection(grid, currentRowMatrix, currentColMatrix, rowInMatrix, colInMatrix);
+                        if (!(connectionCheck === 2)) {
+                            // finally check whether that letter was alredy used 2 times (3 times exception), in that case we cannot add another one and cannot use that field
+                            letterIndexInLetterArray = findLetterInArray(currentLetter, letterArray);
+                            let noOfThreesInLetterArray = 0;
+                            letterArray.forEach(letter => {
+                                if (letter[0][1] === 3) {
+                                    noOfThreesInLetterArray++;
+                                }
+                            });
+                            if (!(letterArray[letterIndexInLetterArray][0][1] > 1) || (letterArray[letterIndexInLetterArray][0][1] === 2 && noOfThreesInLetterArray < 2)) {
+                                emptyNeighborFields.push(new Array([row, col]));
+                            }
+                        }
+                        
                     }
+                }
             }
         }
 
@@ -382,17 +414,16 @@ while (!solutionFound) {
                     let outputString = "Good aproximation found in iteration " + iteration + "\n";
                     outputString += "Startposition: " + startRowMatrix + ";" + startColMatrix + "\n";
                     outputString += "reached stringIndex " + stringIndex + " of " + frase.length + "\n";
+                    outputString += frase.substring(0, stringIndex) + "\n";
                     outputString += drawGrid(grid);
+                    console.log(outputString);
                     fs.writeFileSync('bestGrids.txt', outputString, function (err) {
                         if (err) return console.log(err);
-                      });
+                    });
                 }
             }
 
-            // check if this was the last letter, in that case we found a solution
-            if (stringIndex === frase.length-1) {
-                solutionFound = true;
-            } 
+            
             
             break;
         }
