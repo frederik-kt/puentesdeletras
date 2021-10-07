@@ -1,0 +1,19 @@
+Solution found in iteration 239
+Startposition: 6;8
+reached letter 43 of 43
+atestcasecanbeastepofamoreelaboratetestcase
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	b	 	 	 	p	 	 	 	 	
+ 	 	 	 	 	 	 	/	 	\	 	/	|	 	 	 	 	
+ 	 	 	 	o	 	n	 	c	 	e	 	o	 	 	 	 	
+ 	 	 	 	|	\	 	\	|	\	|	\	 	\	 	 	 	
+ 	 	 	 	r	 	b	 	a	 	t	 	a	--	f	 	 	
+ 	 	 	 	|	/	 	/	|	\	|	/	 	\	 	 	 	
+ 	 	 	 	a	--	t	 	c	 	s	 	 	 	m	 	 	
+ 	 	 	 	 	\	 	\	|	/	 	 	 	/	 	 	 	
+ 	 	 	 	 	 	l	--	e	 	 	 	o	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	\	 	/	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	r	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	

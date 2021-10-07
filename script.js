@@ -1,6 +1,6 @@
 fs = require('fs');
 
-const frase = "naturallanguagetestactionsconstrainfeatureautomation";
+const frase = "atestcasecanbeastepofamoreelaboratetestcase";
 //const frase = "littletestxyz";
 console.log("trying to solve for a " + frase.length + " letter sentence...");
 
@@ -417,7 +417,7 @@ while (!solutionFound) {
                     outputString += frase.substring(0, stringIndex) + "\n";
                     outputString += drawGrid(grid);
                     console.log(outputString);
-                    fs.writeFileSync('bestGrids.txt', outputString, function (err) {
+                    fs.writeFileSync('bestGrid.txt', outputString, function (err) {
                         if (err) return console.log(err);
                     });
                 }
