@@ -1,6 +1,6 @@
 fs = require("fs");
 
-const frase = "testerspopulatethedatabasewithmanualinteractions";
+const frase = "atestcasecanbeastepofamoreelaboratetestcase";
 //const frase = "littleestxyz";
 console.log("trying to solve for a " + frase.length + " letter sentence...");
 
@@ -21,24 +21,13 @@ function sleep(ms) {
 }
 
 const countDifferentLetters = (letters) => {
-  let letterArray = new Array();
+  let letterMap = new Map();
   for (let i = 0; i < letters.length; i++) {
-    if (!letterArray.includes(letters[i])) {
-      letterArray.push(letters[i]);
+    if (!letterMap.has(letters[i])) {
+      letterMap.set(letters[i], 0);
     }
   }
-  for (let i = 0; i < letterArray.length; i++) {
-    letterArray[i] = new Array([letterArray[i], 0]);
-  }
-  return letterArray;
-};
-
-const findLetterInArray = (letter, letterArray) => {
-  let index = 0;
-  while (letterArray[index][0][0] != letter) {
-    index++;
-  }
-  return index;
+  return letterMap;
 };
 
 const findField = (
@@ -267,10 +256,8 @@ const gridIndexToMatrixPosition = (index) => {
 };
 
 // determine size of grid
-let letterArray = countDifferentLetters(frase);
-
-/*
-const noDifferentLetters = letterArray.length;
+let letterMap = countDifferentLetters(frase);
+const noDifferentLetters = letterMap.length;
 const maxFields = noDifferentLetters * 2 + 2; // Each letter can appear 2 times + 2 letters that appear 3 times
 let gridHeight = 1;
 let gridWidth = 1;
@@ -286,8 +273,6 @@ while (gridHeight * gridWidth < maxFields) {
 // add one more line and column to check if that facilitates finding a solution
 gridWidth = gridWidth + 3;
 gridHeight = gridHeight + 3;
-
-*/
 
 // new restriction
 gridWidth = 7;
@@ -308,8 +293,8 @@ while (!solutionFound) {
   }
 
   // reset counting of letters placed
-  letterArray.forEach((letter) => {
-    letter[0][1] = 0;
+  letterMap.forEach((letter) => {
+    letterMap.set(letter, 0);
   });
 
   // first letter is placed randomly
@@ -329,13 +314,8 @@ while (!solutionFound) {
   let stringIndex = 0;
 
   grid[startRowMatrix][startColMatrix] = frase[stringIndex];
-  // update letterArray
-  let letterIndexInLetterArray = findLetterInArray(
-    frase[stringIndex],
-    letterArray
-  );
-  letterArray[letterIndexInLetterArray][0][1] =
-    letterArray[letterIndexInLetterArray][0][1] + 1;
+  // update letterMap
+  letterMap.set(frase[stringIndex], letterMap.get(frase[stringIndex]) + 1);
 
   // fill all other fields with emptyChar
   for (let row = 0; row < grid.length; row++) {
@@ -415,20 +395,16 @@ while (!solutionFound) {
               );
               if (!(connectionCheck === 2)) {
                 // finally check whether that letter was alredy used 2 times (3 times exception), in that case we cannot add another one and cannot use that field
-                letterIndexInLetterArray = findLetterInArray(
-                  currentLetter,
-                  letterArray
-                );
-                let noOfThreesInLetterArray = 0;
-                letterArray.forEach((letter) => {
-                  if (letter[0][1] === 3) {
-                    noOfThreesInLetterArray++;
+                let noOfThreesInLetterMap = 0;
+                letterMap.forEach((letter, count) => {
+                  if (count === 3) {
+                    noOfThreesInLetterMap++;
                   }
                 });
                 if (
-                  !(letterArray[letterIndexInLetterArray][0][1] > 1) ||
-                  (letterArray[letterIndexInLetterArray][0][1] === 2 &&
-                    noOfThreesInLetterArray < 2)
+                  !(letterMap.get(currentLetter) > 1) ||
+                  (letterMap.get(currentLetter) === 2 &&
+                    noOfThreesInLetterMap < 2)
                 ) {
                   emptyNeighborFields.push(new Array([row, col]));
                 }
@@ -499,9 +475,7 @@ while (!solutionFound) {
       grid[currentRowMatrix][currentColMatrix] = currentLetter;
 
       // update letterArray
-      letterIndexInLetterArray = findLetterInArray(currentLetter, letterArray);
-      letterArray[letterIndexInLetterArray][0][1] =
-        letterArray[letterIndexInLetterArray][0][1] + 1;
+      letterMap.set(currentLetter, letterMap.get(currentLetter) + 1);
     } else {
       // no where left to go, break the for-loop and start in while again with a new start position
 

@@ -1,19 +1,13 @@
-Solution found in iteration 239
-Startposition: 6;8
-reached letter 43 of 43
-atestcasecanbeastepofamoreelaboratetestcase
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
- 	 	 	 	 	 	 	 	b	 	 	 	p	 	 	 	 	
- 	 	 	 	 	 	 	/	 	\	 	/	|	 	 	 	 	
- 	 	 	 	o	 	n	 	c	 	e	 	o	 	 	 	 	
- 	 	 	 	|	\	 	\	|	\	|	\	 	\	 	 	 	
- 	 	 	 	r	 	b	 	a	 	t	 	a	--	f	 	 	
- 	 	 	 	|	/	 	/	|	\	|	/	 	\	 	 	 	
- 	 	 	 	a	--	t	 	c	 	s	 	 	 	m	 	 	
- 	 	 	 	 	\	 	\	|	/	 	 	 	/	 	 	 	
- 	 	 	 	 	 	l	--	e	 	 	 	o	 	 	 	 	
- 	 	 	 	 	 	 	 	 	\	 	/	 	 	 	 	 	
- 	 	 	 	 	 	 	 	 	 	r	 	 	 	 	 	 	
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+Solution found in iteration 11862951
+Startposition: 8;8
+reached letter 48 of 48
+testerspopulatethedatabasewithmanualinteractions
+ 	 	 	 	n	--	o	--	i	 	a	 	 	
+ 	 	 	/	 	 	 	 	 	\	|	\	 	
+ 	 	s	 	m	 	b	 	c	--	t	 	d	
+ 	 	 	/	 	\	 	\	|	/	|	\	|	
+ 	 	a	--	u	 	h	 	a	 	h	--	e	
+ 	/	|	/	 	/	 	/	|	\	 	 	 	
+l	 	n	--	t	 	r	--	s	 	l	--	u	
+ 	\	|	/	 	\	|	/	|	\	 	/	 	
+ 	 	i	--	w	--	e	--	t	 	p	--	o	
