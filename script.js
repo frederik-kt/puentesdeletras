@@ -510,7 +510,7 @@ while (!solutionFound) {
         maxStringIndex = stringIndex;
 
         // new maxStringIndex reached, let's actually save the grid we found here
-        if (stringIndex > frase.length - 6) {
+        if (stringIndex > frase.length / 2) {
           let outputString =
             "Good aproximation found in iteration " + iteration + "\n";
           outputString +=
