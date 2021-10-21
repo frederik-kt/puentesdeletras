@@ -1,13 +1,13 @@
-Solution found in iteration 11862951
-Startposition: 8;8
-reached letter 48 of 48
-testerspopulatethedatabasewithmanualinteractions
- 	 	 	 	n	--	o	--	i	 	a	 	 	
- 	 	 	/	 	 	 	 	 	\	|	\	 	
- 	 	s	 	m	 	b	 	c	--	t	 	d	
- 	 	 	/	 	\	 	\	|	/	|	\	|	
- 	 	a	--	u	 	h	 	a	 	h	--	e	
- 	/	|	/	 	/	 	/	|	\	 	 	 	
-l	 	n	--	t	 	r	--	s	 	l	--	u	
- 	\	|	/	 	\	|	/	|	\	 	/	 	
- 	 	i	--	w	--	e	--	t	 	p	--	o	
+Good aproximation found in iteration 650958
+Startposition: 2;6
+reached stringIndex 43 of 56
+testcasesaredeclaredincontrollednaturallang
+g	 	d	--	e	--	s	 	 	 	r	 	 	
+|	/	 	/	|	\	 	\	 	/	 	\	 	
+n	 	l	 	s	--	t	 	a	 	c	--	e	
+ 	\	|	\	 	 	|	/	|	/	 	/	 	
+t	--	a	--	l	 	c	 	l	 	d	 	 	
+|	 	|	 	|	/	|	 	 	/	 	 	 	
+u	--	r	--	o	--	n	--	i	 	 	 	 	
+ 	 	 	\	 	/	 	 	 	 	 	 	 	
+ 	 	 	 	t	 	 	 	 	 	 	 	 	

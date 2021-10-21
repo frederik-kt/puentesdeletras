@@ -1,6 +1,6 @@
 fs = require("fs");
 
-const frase = "testerspopulatethedatabasewithmanualinteractions";
+const frase = "testcasesaredeclaredincontrollednaturallanguagesentences";
 //const frase = "littleestxyz";
 console.log("trying to solve for a " + frase.length + " letter sentence...");
 
